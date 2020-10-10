@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "npm-publish": "yarn test && yarn publish"
+    "npm-publish": "yarn publish"
   },
   "repository": {
     "type": "git",
