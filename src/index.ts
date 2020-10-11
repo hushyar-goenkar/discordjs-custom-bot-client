@@ -9,7 +9,9 @@ export type onMessageHandler = {
 }
 
 export interface IDiscordClientOptions extends ClientOptions {
+  /** Whether to enable per server custom prefix via nickname. Default false. */
   enableCustomPrefix?: boolean,
+  /** Default prefix. Default '!' */
   defaultPrefix?: string
 }
 
