@@ -71,7 +71,7 @@ export default function(client: typeof Client) {
      * @param quickResponse A direct string or embed output to be sent in the same channel. Enter empty string for no quick response.
      * @param cb A callback that is fired when the command is run.
      */
-    onCommand(command: string, quickResponse:  (string | MessageEmbed), cb?: (msg: Message, prefix: string) => void) {
+    onCommand(command: string, quickResponse:  (string | MessageEmbed), cb?: (msg: Message, prefix: string, commandParams: string[]) => void) {
       this.onMsg({
         name: command,
         handler: msg => {
@@ -79,9 +79,11 @@ export default function(client: typeof Client) {
             getCustomPrefix(this.defaultPrefix, msg.guild) :
             this.defaultPrefix;
 
-          if (msg.content.toLowerCase() === `${prefix}${command}`) {
+          if (msg.content.toLowerCase().startsWith(`${prefix}${command}`)) {
+            const commandParams = msg.content.toLowerCase().split(' ').slice(1);
+
             if (quickResponse !== '') msg.channel.send(quickResponse);
-            if (cb) cb(msg, prefix);
+            if (cb) cb(msg, prefix, commandParams);
           }
         }
       })
