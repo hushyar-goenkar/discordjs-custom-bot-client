@@ -1,6 +1,6 @@
 {
   "name": "@hushyar-goenkar/discordjs-custom-bot-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "A custom extended version of discordjs Client class that optimizes the message handler and more.",
   "main": "dist/index.js",
